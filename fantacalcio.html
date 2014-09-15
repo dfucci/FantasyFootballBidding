@@ -1,0 +1,49 @@
+<head>
+  <title>Fantanarchist3</title>
+  <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootswatch/3.0.3/yeti/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="home-jumbotron vertical-center jumbotron">
+  <h1>Welcome to Fantanarchist3!</h1>
+</div>
+  <div class="container">
+  {{> access}}
+  <br />
+    {{> hello}}
+</div>
+</body>
+
+<template name="hello">
+  {{#if access}}
+  <div class="btn-group" data-toggle="buttons" id="roles">
+    <label class="btn btn-primary" id="portieri">
+      <input type="radio" name="options" value='P' checked> Portieri
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="difensori"> Difensori
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="centrocampisti"> Centrocampisti
+    </label>
+      <label class="btn btn-primary">
+      <input type="radio" name="options" id="attaccanti"> Attaccanti
+    </label>
+</div>
+  {{/if}}
+ <h4>Il giocatore estratto e':</h4>
+  <h1>{{player.Calciatore}}, {{player.Squadra}}</h1>
+  {{#if access}}
+    <button class="drawButton btn-lg btn-success">Estrai!</button>
+  {{/if}}
+   Rimanenti: {{remaining}}
+</template>
+
+<template name="access">
+  <form class="form-inline" role="form">
+  <div class="form-group">
+  <input id="pass" type="password" class="form-control" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-default btn-xs login">Sign in</button>
+</form>
+</template>
