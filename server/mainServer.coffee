@@ -6,7 +6,8 @@ Meteor.methods {
     shuffled = _.shuffle players
     Current.remove({})
     Players.remove shuffled[0]
-    Current.insert shuffled[0]
+    count = Players.find({"Ruolo": role}).count()
+    Current.insert {"Player":shuffled[0], "Remaining":count}
 }
 
 

@@ -3,12 +3,14 @@
 Template.hello.events ={
   'click .drawButton' : (e)->
     e.preventDefault()
+    role =document.getElementsByClassName("active")[0].getElementsByTagName("input")[0].value
     Meteor.call "draw", role, (err, player)->
 
 
  'click #roles label' : (e,t) ->
    e.preventDefault()
 }
+
 
 Template.hello.active = ->
   @active?"active":""
@@ -25,5 +27,3 @@ Template.hello.player = ->
 Template.hello.access = ->
   Session.get "access"
 
-Template.hello.remaining = ->
-    Players.find().fetch().length
