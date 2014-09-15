@@ -6,16 +6,18 @@ Template.hello.events ={
     Meteor.call "draw", role, (err, player)->
 
 
- 'click #roles label' : (e,t) ->
-   e.preventDefault()
+  'click #roles label':(e)->
+    e.preventDefault()
+    clickedButton = e.currentTarget.firstChild.nextElementSibling.id
+    alreadyClicked = document.getElementsByClassName("active")[0].firstChild.nextElementSibling.id
+    if clickedButton isnt alreadyClicked
+      document.getElementById(alreadyClicked).parentElement.className="btn btn-primary"
 }
 
 
-Template.hello.active = ->
-  @active?"active":""
 
 Template.access.events ={
-  'change button.login' : (e)->
+  'click button.login' : (e)->
     console.log 'click'
     e.preventDefault()
     Session.set("access", true) if document.getElementById("pass").value is "geronimo"
