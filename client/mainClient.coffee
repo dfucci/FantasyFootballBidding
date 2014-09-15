@@ -1,4 +1,3 @@
-@Players = new Meteor.Collection "Players"
 @Current = new Meteor.Collection "Current"
 Template.hello.events ={
   'click .drawButton' : (e)->
@@ -16,7 +15,7 @@ Template.hello.active = ->
   @active?"active":""
 
 Template.access.events ={
-  'click button.login' : (e)->
+  'change button.login' : (e)->
     console.log 'click'
     e.preventDefault()
     Session.set("access", true) if document.getElementById("pass").value is "geronimo"
